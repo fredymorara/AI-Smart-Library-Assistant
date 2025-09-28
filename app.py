@@ -15,8 +15,12 @@ st.set_page_config(
     initial_sidebar_state="auto",
 )
 
-# --- LOAD ENVIRONMENT VARIABLES ---
-load_dotenv()
+ # --- LOAD ENVIRONMENT VARIABLES ---
+ # Only load the .env file if it exists (i.e., we're running locally)
+ if os.path.exists('.env'):
+     from dotenv import load_dotenv
+     load_dotenv()
+
 
 # --- LOAD THE VECTOR DATABASE ---
 @st.cache_resource
